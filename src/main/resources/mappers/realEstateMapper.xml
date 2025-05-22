@@ -4,7 +4,8 @@
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
  <mapper namespace="com.haemin.spring.test.mybatis.repository.RealEstateRepository">
- 	<select id="selectRealEstateId" parameterType="int"
+ 	
+ 	<select id="selectRealEstate" parameterType="int"
  	resultType="com.haemin.spring.test.mybatis.domain.RealEstate">
  		SELECT
  			`id`
@@ -21,4 +22,64 @@
  		WHERE
  			`id` = #{id}
  	</select>
+ 	
+ 	<select id="selectRealEstateByRentPrice" parameterType="int"
+ 	resultType="com.haemin.spring.test.mybatis.domain.RealEstate">
+ 		SELECT
+ 			`id`
+ 			, `realtorId`
+ 			, `address`
+ 			, `area`
+ 			, `type`
+ 			, `price`
+ 			, `rentPrice`
+ 			, `createdAt`
+ 			, `updatedAt`
+ 		FROM
+ 			`real_estate`
+ 		WHERE
+ 			<![CDATA[ `rentPrice` < #{rentPrice} ]]>
+ 	</select>
+ 	
+ 	<select id="selectRealEstateByAreaAndPrice" parameterType="map"
+ 	resultType="com.haemin.spring.test.mybatis.domain.RealEstate">
+ 		SELECT
+ 			`id`
+ 			, `realtorId`
+ 			, `address`
+ 			, `area`
+ 			, `type`
+ 			, `price`
+ 			, `rentPrice`
+ 			, `createdAt`
+ 			, `updatedAt`
+ 		FROM
+ 			`real_estate`
+ 		WHERE <![CDATA[
+ 			`area` >= #{area}
+ 			AND `price` <= #{price}
+			]]>
+ 	</select>
+ 	
+ 	<insert id="insertRealEstateByObject"
+ 	parameterType="com.haemin.spring.test.mybatis.domain.RealEstate">
+ 		INSERT INTO
+ 			`real_estate`
+ 		(
+ 			`realtorId`
+ 			, `address`
+ 			, `area`
+ 			, `type`
+ 			, `price`
+ 		)
+ 		VALUE
+ 		(
+ 			#{realtorId}
+ 			, #{address}
+ 			, #{area}
+ 			, #{type}
+ 			, #{price}
+ 		)
+ 	</insert>
+ 	
  </mapper>
