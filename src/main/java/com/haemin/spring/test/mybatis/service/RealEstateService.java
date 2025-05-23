@@ -2,6 +2,7 @@ package com.haemin.spring.test.mybatis.service;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,6 +32,28 @@ public class RealEstateService {
 	
 	public int addRealEstateByObject(RealEstate realEstate) {
 		int count = realEstateRepository.insertRealEstateByObject(realEstate);
+		return count;
+	}
+	
+	public int addRealEstate(
+			int realtorId
+			, String address
+			, int area
+			, String type
+			, int price
+			, int rentPrice) {
+		int count = realEstateRepository.insertRealEstate(realtorId, address, area, type, price, rentPrice);
+		return count;
+	}
+	
+	// 전달 받은 id와 일치하는 매물 정보의 type과 price를 수정하는 기능
+	public int updateRealEstate(int id, String type, int price) {
+		int count = realEstateRepository.updateRealEstate(id, type, price);
+		return count;
+	}
+	
+	public int deleteRealEstate(int id) {
+		int count = realEstateRepository.deleteRealEstate(id);
 		return count;
 	}
 

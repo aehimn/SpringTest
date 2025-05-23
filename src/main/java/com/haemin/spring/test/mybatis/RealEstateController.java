@@ -55,7 +55,33 @@ public class RealEstateController {
 
 		int count = realEstateService.addRealEstateByObject(realEstate);
 		return "입력 성공 : " + count;
-		// mysql real_estate 재부팅
+	}
+	
+	@ResponseBody
+	@RequestMapping("/insert/2")
+	public String createRealEstate(@RequestParam("realtorId") int realtorId) {
+//		address : 썅떼빌리버 오피스텔 814호
+//		area : 45
+//		type : 월세
+//		price : 100000
+//		rentPrice : 120
+		int count = realEstateService.addRealEstate(realtorId, "썅떼빌리버 오피스텔 814호", 45, "월세", 100000, 120);
+		return "입력 성공 : " + count;
+	}
+	
+	@ResponseBody
+	@RequestMapping("/update")
+	public String updateRealEstate() {
+//		id가 22 인 행의 type 을 전세로 바꾸고 price 를 70000으로 변경하세요.
+		int count = realEstateService.updateRealEstate(22, "전세", 70000);
+		return "수정 성공 : " + count;
+	}
+	
+	@ResponseBody
+	@RequestMapping("/delete")
+	public String deleteRealEstate(@RequestParam("id") int id) {
+		int count = realEstateService.deleteRealEstate(id);
+		return "삭제 성공 : " + count;
 	}
 
 }
