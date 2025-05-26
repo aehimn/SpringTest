@@ -9,9 +9,9 @@
 
 	<div class="container">
 		<h1>판매자 정보</h1>
-		<img width="200" th:attr="src=${result.profileImage}" src="https://cdn.pixabay.com/photo/2025/04/27/13/31/avocado-9563037_1280.png">
-		<div class="display-4" th:text="${result.nickname}">다팔아</div>
-		<h1 class="text-warning" th:text="${result.temperature}">36.5</h1>
+		<img width="200" th:src="${seller.profileImage}" src="https://cdn.pixabay.com/photo/2025/04/27/13/31/avocado-9563037_1280.png">
+		<div class="display-4" th:text="${seller.nickname}">에스파</div>
+		<h1 class="text-warning" th:text="${seller.temperature}">53.9</h1>
 	</div>
 
 </body>

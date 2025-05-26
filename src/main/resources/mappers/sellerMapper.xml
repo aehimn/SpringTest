@@ -5,6 +5,22 @@
  
  <mapper namespace="com.haemin.spring.test.mvc.repository.SellerRepository">
  
+ 	<insert id="insertSeller" parameterType="map">
+ 		INSERT INTO
+ 			`seller`
+ 		(
+ 			`nickname`
+ 			, `temperature`
+ 			, `profileImage`
+ 		)
+ 		VALUE
+ 		(
+ 			#{nickname}
+ 			, #{temperature}
+ 			, #{profileImage}
+ 		)
+ 	</insert>
+ 
  	<select id="selectLastSeller"
  	resultType="com.haemin.spring.test.mvc.domain.Seller">
  		SELECT
@@ -20,6 +36,21 @@
  			`id` DESC
  		LIMIT
  			1
+ 	</select>
+ 	
+ 	<select id="selectSeller" parameterType="int"
+ 	resultType="com.haemin.spring.test.mvc.domain.Seller">
+ 		SELECT
+ 			`id`
+ 			, `nickname`
+ 			, `temperature`
+ 			, `profileImage`
+ 			, `createdAt`
+ 			, `updatedAt`
+ 		FROM
+ 			`seller`
+ 		WHERE
+ 			`id`=#{id}
  	</select>
  
  </mapper>
