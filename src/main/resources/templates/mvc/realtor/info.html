@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>공인중개사 정보</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+</head>
+<body>
+
+	<div class="container">
+		<h2>공인중개사 정보</h2>
+		
+		<table class="table">
+			<tr>
+				<th>id</th>
+				<td th:text="${realtor.id}">1231</td>
+			</tr>
+			<tr>
+				<th>상호명</th>
+				<td th:text="${realtor.office}">메가 공인중개사</td>
+			</tr>
+			<tr>
+				<th>주소</th>
+				<td th:text="${realtor.address}">서울시 서초구</td>
+			</tr>
+			<tr>
+				<th>등급</th>
+				<td th:text="${realtor.grade}">안심중개사</td>
+			</tr>
+		</table>
+	</div>
+
+</body>
+</html>
