@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>기상청</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+<link rel="stylesheet" href="/thymeleaf/style.css">
+</head>
+<body>
+	<div id="wrap">
+		<section class="contents d-flex">
+			<nav class="main-menu">
+				<div class="logo d-flex justify-content-center align-items-center">
+					<img width="40" src="https://i.namu.wiki/i/hDE3JnDsi38teHYizOlMC5ip7L4jOfOFpwe50yKdBd9t9RUSvzTl9smyR55heN2KMgD383A6UzMGdE-GMjDHsQ.svg">
+					<h4 class="text-white ml-2">기상청</h4>
+				</div>
+				<ul class="nav flex-md-column">
+					<li class="nav-item"><a href="#" class="nav-link text-white h4">날씨</a></li>
+					<li class="nav-item"><a href="#" class="nav-link text-white h4">날씨입력</a></li>
+					<li class="nav-item"><a href="#" class="nav-link text-white h4">테마날씨</a></li>
+					<li class="nav-item"><a href="#" class="nav-link text-white h4">관측 기후</a></li>
+				</ul>
+			</nav>
+			<article class="main-contents pt-3 px-5">
+				<h2>과거 날씨</h2>
+				<table class="table text-center">
+					<thead>
+						<tr>
+							<th>날짜</th>
+							<th>날씨</th>
+							<th>기온</th>
+							<th>강수량</th>
+							<th>미세먼지</th>
+							<th>풍속</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>2015년 7월 1일</td>
+							<td><img src="http://marondal.com/material/images/dulumary/web/jstl/rainy.jpg"></td>
+							<td>21.9°C</td>
+							<td>83.5mm</td>
+							<td>보통</td>
+							<td>2.9km/h</td>
+						</tr>
+						<tr>
+							<td>2015년 7월 1일</td>
+							<td><img src="http://marondal.com/material/images/dulumary/web/jstl/rainy.jpg"></td>
+							<td>21.9°C</td>
+							<td>83.5mm</td>
+							<td>보통</td>
+							<td>2.9km/h</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+		</section>
+		<hr class="m-0">
+		<footer class="d-flex">
+			<div class="footer-logo d-flex justify-content-center align-items-center">
+				<img width="150" src="https://aphrosys.com/img/partners_white/kma.png">
+			</div>
+			<div class="description text-secondary d-flex align-items-center">
+				<div class="ml-4">
+					<div>(07062) 서울시 동작구 여의대방로16길 61</div>
+					<div>Copyright@2020 KMA. All Rights RESERVED.</div>
+				</div>
+			</div>
+		</footer>
+	</div>
+</body>
+</html>
