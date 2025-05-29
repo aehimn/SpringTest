@@ -24,12 +24,23 @@
 			<tbody>
 				<tr th:each="member, status : ${members}">
 					<td th:text="${status.count}">32</td>
-					<td>유재석</td>
-					<td>2001년 4월 3일</td>
-					<td>010-2222-1111</td>
-					<td>대한민국</td>
-					<td>yu@gmail.com</td>
-					<td>안녕하세요 국민 MC 유재석 입니다</td>
+					<td th:text="${member.name}">유재석</td>
+					<td th:text="${#temporals.format(member.birth, 'yyy년 M월 d일')}">2001년 4월 3일</td>
+					
+					<td>
+						<span th:if="${#strings.startsWith(member.phoneNumber, '010')}" th:text="${member.phoneNumber}">010-2222-1111</span>
+						<span th:unless="${#strings.startsWith(member.phoneNumber, '010')}">유효하지 않은 전화번호</span>
+					</td>
+					
+					<td th:text="${#strings.replace(member.nationality, '삼국시대', '삼국 - ')}">대한민국</td>
+					<td><b th:text="${#strings.arraySplit(member.email, '@')[0]}">yu</b>@<span th:text="${#strings.arraySplit(member.email, '@')[1]}">gmail.com</span></td>
+					<td th:text="${#strings.abbreviate(member.introduce, 18)}">안녕하세요 국민 MC 유재석 입니다</td>
+					<!-- 
+					<td>
+						<span th:if="${#strings.length(member.introduce) < 15}" th:text="${member.introduce}">안녕하세요 국민 MC 유재석 입니다</span>
+						<span th:unless="${#strings.length(member.introduce) < 15}" th:text="|${#strings.substring(member.introduce, 0, 15)}...|">안녕하세요 국민 MC 유재석 입니다</span>
+					</td>
+					-->
 				</tr>
 			</tbody>
 		</table>

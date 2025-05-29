@@ -1,4 +1,4 @@
-package com.haemin.spring.test.thymeleaf;
+package com.haemin.spring.test.thymeleaf.domain;
 
 import java.time.LocalDate;
 
