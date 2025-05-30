@@ -18,5 +18,20 @@ public class WeatherService {
 		List<Weather> weatherHistory = weatherRepository.selectWeatherHistory();
 		return weatherHistory;
 	}
+	
+	public int addWeather(
+			String date
+			, String weather
+			, double temperatures
+			, double precipitation
+			, String microDust
+			, double windSpeed) {
+		int count = weatherRepository.insertWeather(date, weather, temperatures, precipitation, microDust, windSpeed);
+		return count;
+	}
+	
+	public int addWeatherByObject(Weather weather) {
+		return weatherRepository.insertWeatherByObject(weather);
+	}
 
 }

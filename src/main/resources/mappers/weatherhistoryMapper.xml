@@ -11,7 +11,58 @@
  			, `date`
  			, `weather`
  			, `temperatures`
- 			, <!-- 하다 말음 -->
+ 			, `precipitation`
+ 			, `microDust`
+ 			, `windSpeed`
+ 			, `createdAt`
+ 			, `updatedAt`
+ 		FROM
+ 			`weatherhistory`
  	
  	</select>
+ 	
+ 	<insert id="insertWeather" parameterType="map">
+ 		INSERT INTO
+ 			`weatherhistory`
+ 		(
+ 			`date`
+ 			, `weather`
+ 			, `temperatures`
+ 			, `precipitation`
+ 			, `microDust`
+ 			, `windSpeed`
+ 		)
+ 		VALUE
+ 		(
+ 			#{date}
+ 			, #{weather}
+ 			, #{temperatures}
+ 			, #{precipitation}
+ 			, #{microDust}
+ 			, #{windSpeed}
+ 		)
+ 	</insert>
+ 	
+ 	<insert id="insertWeatherByObject"
+ 	parameterType="com.haemin.spring.test.thymeleaf.domain.Weather">
+ 		INSERT INTO
+ 			`weatherhistory`
+ 		(
+ 			`date`
+ 			, `weather`
+ 			, `temperatures`
+ 			, `precipitation`
+ 			, `microDust`
+ 			, `windSpeed`
+ 		)
+ 		VALUE
+ 		(
+ 			#{date}
+ 			, #{weather}
+ 			, #{temperatures}
+ 			, #{precipitation}
+ 			, #{microDust}
+ 			, #{windSpeed}
+ 		)
+ 	</insert>
  </mapper>
