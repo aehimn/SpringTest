@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>즐겨 찾기 목록</title>
+<title>즐겨찾기 목록</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 </head>
 <body>
 
 	<div class="container">
-		<h2>즐겨 찾기 목록</h2>
+		<h2>즐겨찾기 목록</h2>
 		<table class="table text-center">
 			<thead>
 				<tr>
@@ -18,15 +18,10 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-					<td>1</td>
-					<td>마론달</td>
-					<td>https://marondal.com</td>
-				</tr>
-				<tr>
-					<td>2</td>
-					<td>구글</td>
-					<td>https://google.com</td>
+				<tr th:each="favorite:${favoriteList}">
+					<td th:text="${favorite.id}">1</td>
+					<td th:text="${favorite.name}">마론달</td>
+					<td th:text="${favorite.url}">https://marondal.com</td>
 				</tr>
 			</tbody>
 		</table>

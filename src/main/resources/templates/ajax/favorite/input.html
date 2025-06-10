@@ -2,19 +2,65 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>즐겨 찾기 추가하기</title>
+<title>즐겨찾기 추가하기</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 </head>
 <body>
 
 	<div class="container">
-		<h2>즐겨 찾기 추가하기</h2>
-		<div>제목</div>
-		<input class="form-control mb-3" type="text">
-		<div>주소</div>
-		<input class="form-control mb-3" type="text">
-		<button class="btn btn-success form-control" type="button">추가</button>
+		<h2>즐겨찾기 추가하기</h2>
+		<label>제목</label>
+		<input type="text" class="form-control" id="nameInput">
+		<label>주소</label>
+		<input type="text" class="form-control" id="urlInput">
+		<button id="addBtn" type="button" class="btn btn-success btn-block mt-3">추가</button>
 	</div>
+
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+	<script>
+	
+		$("#addBtn").on("click", function() {
+			let name = $("#nameInput").val();
+			let url = $("#urlInput").val();
+			
+			if(name == "") {
+				alert("사이트 이름을 입력하세요");
+				return ;
+			}
+			if(url == "") {
+				alert("주소를 입력하세요");
+				return ;
+			}
+			
+			// http:// 로 시작하지 않는다 그리고 https:// 로 시작하지 않는다
+			if(!url.startsWith("http://") && !url.startsWith("https://")) {
+				alert("잘못된 규격의 url 입니다")
+				return ;
+			}
+			
+			$.ajax({
+				type:"post"
+				, url:"/ajax/favorite/create"
+				, data:{"name":name, "url":url}
+				, success:function(response) {
+					// 성공 : {"result":"success"}
+					// 실패 : {"result":"fail"}
+					if(response.result == "success") {
+						// /ajax/favorite/list 로 이동
+						// 새로운 요청
+						location.href="/ajax/favorite/list";
+					} else {
+						alert("즐겨찾기 추가 실패!");
+					}
+				}
+				, error:function() {
+					alert("즐겨찾기 추가 에러!")
+				}
+			});
+			
+		});
+	
+	</script>
 
 </body>
 </html>
