@@ -54,4 +54,38 @@ public class FavoriteController {
 		return "ajax/favorite/input";
 	}
 	
+	@ResponseBody
+	@PostMapping("/duplicate-url")
+	public Map<String, Boolean> isDuplicateUrl(@RequestParam("url") String url) {
+		// 중복 : {"isDuplicate":true}
+		// 중복 안됨 : {"isDuplicate":false}
+		Map<String, Boolean> resultMap = new HashMap<>();
+		if(favoriteService.isDuplicateUrl(url)) {
+			// 중복
+			resultMap.put("isDuplicate", true);
+		} else {
+			// 중복 안됨
+			resultMap.put("isDuplicate", false);
+		}
+		return resultMap;
+	}
+	
+	@ResponseBody
+	@GetMapping("/delete")
+	public Map<String, String> deleteFavorite(@RequestParam("id") int id) {
+		int count = favoriteService.deleteFavorite(id);
+		
+		// 성공 : {"result":"success"}
+		// 실패 : {"result":"fail"}
+		Map<String, String> resultMap = new HashMap<>();
+		if(count == 1) {
+			// 성공
+			resultMap.put("result", "success");
+		} else {
+			// 실패
+			resultMap.put("result", "fail");
+		}
+		return resultMap;
+	}
+	
 }

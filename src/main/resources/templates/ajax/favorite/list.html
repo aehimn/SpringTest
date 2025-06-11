@@ -15,6 +15,7 @@
 					<th>No.</th>
 					<th>이름</th>
 					<th>주소</th>
+					<th></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -22,10 +23,35 @@
 					<td th:text="${favorite.id}">1</td>
 					<td th:text="${favorite.name}">마론달</td>
 					<td th:text="${favorite.url}">https://marondal.com</td>
+					<td><button type="button" th:value="${favorite.id}" class="btn btn-danger btn-sm delete-btn">삭제</button></td>
 				</tr>
 			</tbody>
 		</table>
 	</div>
+	
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+	<script>
+		$(".delete-btn").on("click", function() {
+			let id = $(this).val();
+			$.ajax({
+				type:"get"
+				, url:"/ajax/favorite/delete"
+				, data:{"id":id}
+				, success:function(response) {
+					// 성공 : {"result":"success"}
+					// 실패 : {"result":"fail"}
+					if(response.result == "success") {
+						location.reload();
+					} else {
+						alert("삭제 실패");
+					}
+				}
+				, error:function() {
+					alert("삭제 에러");
+				}
+			});
+		});
+	</script>
 
 </body>
 </html>
