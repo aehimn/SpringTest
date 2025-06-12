@@ -1,5 +1,6 @@
 package com.haemin.spring.test.ajax.service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,26 @@ public class BookingService {
 	public List<Booking> getBookingList() {
 		List<Booking> bookingList = bookingRepository.selectBookingList();
 		return bookingList;
+	}
+	
+	public int deleteBooking(int id) {
+		int count = bookingRepository.deleteBooking(id);
+		return count;
+	}
+	
+	public int addBooking(
+			String name
+			, LocalDate date
+			, int day
+			, int headcount
+			, String phoneNumber) {
+		int count = bookingRepository.insertBooking(name, date, day, headcount, phoneNumber, "대기중");
+		return count;
+	}
+	
+	public Booking getBookingByNameAndPhoneNumber(String name, String phoneNumber) {
+		Booking booking = bookingRepository.selectBookingByNameAndPhoneNumber(name, phoneNumber);
+		return booking;
 	}
 
 }
