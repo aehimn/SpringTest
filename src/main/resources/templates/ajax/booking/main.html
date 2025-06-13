@@ -108,17 +108,17 @@
                 
                 $.ajax({
                 	type:"get"
-                	, url:"/ajax/booking/check"
+                	, url:"/ajax/booking/search"
                 	, data:{"name":name, "phoneNumber":phoneNumber}
                 	, success:function(response) {
-                		if(response.id == null) {
-                			alert("조회 결과가 없습니다")
-                		} else {
-	                		let date = response.date;
-	                		let day = response.day;
-	                		let headcount = response.headcount;
-	                		let state = response.state;
+                		if(response.result == "success") {
+	                		let date = response.data.date;
+	                		let day = response.data.day;
+	                		let headcount = response.data.headcount;
+	                		let state = response.data.state;
 	                		alert("이름: " + name + "\n날짜 : " + date + "\n일수 : " + day + "\n인원 : " + headcount + "\n상태 : " + state);
+                		} else {
+                			alert("조회 결과가 없습니다");
                 		}
                 	}
                 	, error:function() {

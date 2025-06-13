@@ -1,5 +1,6 @@
 package com.haemin.spring.test.ajax.domain;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class Booking {
@@ -8,7 +9,7 @@ public class Booking {
 	private String name;
 	private int headcount;
 	private int day;
-	private LocalDateTime date;
+	private LocalDate date;
 	private String phoneNumber;
 	private String state;
 	private LocalDateTime createdAt;
@@ -38,10 +39,10 @@ public class Booking {
 	public void setDay(int day) {
 		this.day = day;
 	}
-	public LocalDateTime getDate() {
+	public LocalDate getDate() {
 		return date;
 	}
-	public void setDate(LocalDateTime date) {
+	public void setDate(LocalDate date) {
 		this.date = date;
 	}
 	public String getPhoneNumber() {

@@ -71,18 +71,27 @@ public class BookingController {
 		return resultMap;
 	}
 	
-	@GetMapping("/home")
-	public String bookingHome() {
-		return "/ajax/booking/home";
+	@GetMapping("/main")
+	public String bookingMain() {
+		return "/ajax/booking/main";
 	}
 	
 	@ResponseBody
-	@GetMapping("/check")
-	public Booking checkBookingByNameAndPhoneNumber(
+	@GetMapping("/search")
+	public Map<String, Object> searchBooking(
 			@RequestParam("name") String name
 			, @RequestParam("phoneNumber") String phoneNumber) {
-		Booking booking = bookingService.getBookingByNameAndPhoneNumber(name, phoneNumber);
-		return booking;
+		Booking booking = bookingService.getBooking(name, phoneNumber);
+		Map<String, Object> resultMap = new HashMap<>();
+		// 조회 성공 : {"result":"success, "data":booking} 
+		// 조회 실패 : {"result":"fail"}
+		if(booking != null) {
+			resultMap.put("result", "success");
+			resultMap.put("data", booking);
+		} else {
+			resultMap.put("result", "fail");
+		}
+		return resultMap;
 	}
 
 }

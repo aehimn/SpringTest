@@ -50,7 +50,7 @@
  		)
  	</insert>
  	
- 	<select id="selectBookingByNameAndPhoneNumber" parameterType="map"
+ 	<select id="selectBooking" parameterType="map"
  	resultType="com.haemin.spring.test.ajax.domain.Booking">
  		SELECT
  			`id`

@@ -35,8 +35,8 @@ public class BookingService {
 		return count;
 	}
 	
-	public Booking getBookingByNameAndPhoneNumber(String name, String phoneNumber) {
-		Booking booking = bookingRepository.selectBookingByNameAndPhoneNumber(name, phoneNumber);
+	public Booking getBooking(String name, String phoneNumber) {
+		Booking booking = bookingRepository.selectBooking(name, phoneNumber);
 		return booking;
 	}
 
